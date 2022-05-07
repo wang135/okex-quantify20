@@ -1,0 +1,86 @@
+
+一：首先定形态
+形态分为上涨，震荡，下跌，（通过一定周期内的收益率来确定）(多划分形态)，15和30分钟确定形态迟延，初步分成强势（上涨，下跌），弱强势，震荡（无趋势），总共5种形态
+1，强势上涨的形态(5分钟)，强势的定义是从长时间的上涨，回调比较弱
+2，弱势上涨，定义就像爬坡，走走停停，有时间退回几步，定义从15分钟和30分钟进行定义。
+3，震荡的定义是从区间角度出发，价格在一定的区间的运动
+4，
+
+1，上涨的策略
+上涨的策略是多买，少卖，
+2，震荡的策略
+低买高卖
+3，下跌的策略
+多卖少买
+
+
+
+二;策略的构成
+
+由单条K线构成区间，区间产生形态，形态在的运动规律是稳定反转稳定。所以最重要的是找指标确定稳定形态的银子，反转形态的因子
+稳定指标通过均线等进行判断
+反转指标通过突破平台，单条K线成交量过大进行评估
+
+问题
+从最高点回落了1%,且收盘价还是突破状态,        解决
+多头或者空头一直出现信号      解决
+在上涨和回调的时候，波动容易止损 解决
+
+
+底部买入的策略，高点卖出的策略
+
+7月28号 现在的问题是，高盈利不平仓，容易回吐
+
+
+
+
+7月30号（开发）
+震荡可分成强震荡和弱震荡
+强震荡宽买严卖
+弱震荡是严买宽卖
+
+
+波动和涨幅的关系
+
+平仓和状态的关系
+
+
+多头的低点买
+
+
+
+摸高的问题，抄底的问题
+
+
+ logger.info("周期平均数30"+str(np.mean(rates2[-10:]))+"周期平均数15"+str(np.mean(rates[-10:]))+"周期平均数5"+str(np.mean(rates5[-9:])))
+        if (close_30_sum>11 and close_30_sum2 >9 and np.mean(rates2[-10:]) >0.03) or  \
+                 (np.mean(rates[-10:])>0.02 and close_30_sum >9) or (close_5_sum>8 and np.mean(rates5[-9:]) >0.015 ) :
+            #msg.dingding_warn(self.data['instId']+" 大周期上升")
+            logger.info(self.data['instId']+" 大周期上升")
+            dianwei = udz1.upone()
+            #dianwei = 2
+        elif (close_30_sum<3 and close_30_sum2 <4 and np.mean(rates2[-10:]) <-0.03) or \
+                    (np.mean(rates[-10:]) <-0.02  and close_30_sum < 3) \
+                or (close_5_sum<5 and  np.mean(rates5[-9:]) < -0.015 ):
+            #msg.dingding_warn(self.data['instId']+"大周期下降")
+            dianwei = udz1.down()
+            #dianwei = 2
+            logger.info(self.data['instId']+"大周期下降")
+
+        else:
+            #msg.dingding_warn(self.data['instId']+"大周期震荡")
+            dianwei=udz1.zhendang()
+            #dianwei =3
+            logger.info(self.data['instId']+"大周期震荡")
+
+        return (dianwei,close_sell)
+
+
+
+波动和均线矛盾
+
+
+
+*/3 * * * * /root/anaconda3/bin/python3  /home/BIAN/okex-quantify18/main.py >> /home/BIAN/okex-quantify18/qxunipy.log 2>&1
+
+*/1 * * * * /root/anaconda3/bin/python3  /home/jiaoyi1/bian/okex-quantify19/main.py >> /home/jiaoyi1/bian/okex-quantify19/qxunipy.log 2>&1
